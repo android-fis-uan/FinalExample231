@@ -5,10 +5,12 @@ import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
+import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface CatApi {
-    @GET("/api/images/get?format=json&size=med&results_per_page=3")
-    suspend fun getCats(): List<Cat>
+    @GET("/api/images/get?format=json&size=med")
+    suspend fun getCats(@Query("results_per_page") size: Int): List<Cat>
 
     companion object {
 
